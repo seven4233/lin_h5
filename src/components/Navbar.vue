@@ -1,9 +1,21 @@
 <script setup lang="ts">
-const onClickLeft = () => history.back();
+import { useRouter } from 'vue-router';
+const router = useRouter()
 
-defineProps({
+const onClickLeft = () => {
+  if(props.leftFn){
+    props.leftFn()
+  }else {
+    router.push('/')
+  }
+}
+
+const props =  defineProps({
   leftText: {
     type: String,
+  },
+  leftFn:{
+    type: Function
   },
   leftArrow: {
     type: Boolean,

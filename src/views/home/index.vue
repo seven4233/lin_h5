@@ -24,7 +24,7 @@ onMounted(()=>{
 </script>
 
 <template>
-  <Navbar title="夜深人静写代码（首页）" />
+  <Navbar title="首页" />
   
   <Bank/>
   <div>home</div>

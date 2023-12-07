@@ -16,7 +16,6 @@ import Tabbar from './components/Tabbar.vue';
 #app {
   font-size: .16rem;
   height: 100%;
-  overflow: hidden;
 }
 
 </style>

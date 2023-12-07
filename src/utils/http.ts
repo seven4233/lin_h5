@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useUserStore } from "@/stores/userStore";
 import router from "@/router";
+import { showToast } from 'vant';
+
 
 const hlRequest = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL,
@@ -14,6 +16,7 @@ hlRequest.interceptors.request.use(config => {
     if(userStore.getToken){
         config.headers['Authorization'] = userStore.getToken()
     }
+    
     return config
 }, err=> Promise.reject(err))
 
@@ -21,7 +24,10 @@ hlRequest.interceptors.request.use(config => {
 hlRequest.interceptors.response.use(res =>{
     return res.data
 }, (err) =>{
-    if(err.status === 401){
+    console.log(err);
+    
+    if(err.response.status === 401){
+        showToast('请登录后操作');
         router.push('/login')
     }
     return  err.response.data

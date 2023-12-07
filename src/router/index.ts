@@ -1,10 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import Home from '@/views/home/index.vue'
 import Login from '@/views/login/Login.vue'
 import ProfileIndex from '@/views/profile/index.vue'
 import Discover from '@/views/discover/index.vue' 
 import Settings from '@/views/profile/Settings.vue'
 import Sort from '@/views/bank/Sort.vue'
+import Single from '@/views/bank/components/Single.vue'
+import SingleSubmit from '@/views/bank/components/SingleSubmit.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -37,7 +40,7 @@ const router = createRouter({
         {
           path :'',
           name:'profile',
-          component: () => import('../views/profile/Profile.vue')
+          component: () => import('@/views/profile/Profile.vue')
         },
         {
           path :'setting',
@@ -57,8 +60,28 @@ const router = createRouter({
     {
       path: '/bank/:id',
       name: 'sort',
-      component: Sort
+      component: Sort,
+      meta:{
+        showTabbar: false
+      }
     },
+    
+    {
+      path:'/bank/:id/single',
+      name:'single',
+      component: Single,
+      meta:{
+        showTabbar: false
+      }
+    },
+    {
+      path:'/bank/:id/single_submit',
+      name:'single_submit',
+      component: SingleSubmit,
+      meta:{
+        showTabbar: false
+      }
+    }
     // {
     //   component: () => import('../views/AboutView.vue')
     // }

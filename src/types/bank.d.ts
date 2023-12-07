@@ -36,7 +36,7 @@ export type BankItem = {
     options: SingleOption[]
     answer: string
     question_index: number
-    your?: string
+    your: string
   }
   export type SingleListReturnType = {
     doneCount: number

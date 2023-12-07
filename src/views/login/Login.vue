@@ -12,7 +12,7 @@ const changeTo = (value:any)=>{
 
 <template>
  
-  <LoginAccount @changeToMobile ="changeTo" v-if="loginType==='account'"/>
+  <LoginAccount @changeToMobile ="changeTo" v-if="loginType==='mobile'"/>
   <LoginMobile @changeToAccount="changeTo" v-else/>
 
 </template>
