@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 // import { Card, Tag } from 'ant-design-vue'
 import { onMounted } from 'vue'
-import { useBankStore } from '@/stores/bankStore'
+import { useBankStore } from '@/stores/bank/bankStore'
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 

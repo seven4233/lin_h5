@@ -1,6 +1,6 @@
 
 <script lang="ts" setup>
-import { useBankStore } from '@/stores/bankStore'
+import { useBankStore } from '@/stores/bank/bankStore'
 import { getCurrentInstance } from 'vue'
 import { onMounted, onBeforeMount, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router';

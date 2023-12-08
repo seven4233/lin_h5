@@ -1,5 +1,5 @@
 import hlRequest from "@/utils/http";
-import type { BankItem, SortInfo, SingleListReturnType, SubmitQuestionParams } from '@/types/bank'
+import type { BankItem, SortInfo, SingleListReturnType, SubmitQuestionParams , MulListReturnType} from '@/types/bank'
 
 export const getBankListAPI = async ()=>{
     return hlRequest.get("/question/bank", {
@@ -16,6 +16,12 @@ export function getSortInfoAPI(bankId: number) {
 // 获取单选题列表
 export function getSingleListAPI(bankId: number) {
   return hlRequest<SingleListReturnType>({ method: 'GET', url: `/question/${bankId}/single` })
+}
+
+
+// 获取多选题列表
+export function getMulListAPI(bankId: number){
+  return hlRequest<MulListReturnType>({url:`/question/${bankId}/multiple`, method:'GET'})
 }
 
 // 提交題目

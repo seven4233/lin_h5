@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { onMounted, ref, onBeforeMount, getCurrentInstance } from 'vue'
-import { useSingleStore } from '@/stores/singleStore'
+import { useSingleStore } from '@/stores/bank/singleStore'
 import type { SingleOption } from '@/types/bank'
-import { useBankStore } from '@/stores/bankStore'
+import { useBankStore } from '@/stores/bank/bankStore'
 import Navbar from '@/components/Navbar.vue';
 import { useRoute , useRouter} from 'vue-router';
 import { showConfirmDialog } from 'vant';
@@ -98,7 +98,12 @@ const handleSubmit = () => {
 }
 
 const  backToSort = ()=>{
-  router.push(`/bank/${bankId.value}`)
+  showConfirmDialog({
+    title:'提示',
+    message:'确认退出答题?',
+  }).then(()=>{
+    router.push(`/bank/${bankId.value}`)
+  })
 }
 
 const cardNumClick = (index: number) => {
@@ -114,10 +119,10 @@ const cardNumClick = (index: number) => {
       <div class="header-content">
         <!-- 答题卡圈圈 -->
         <div class="answer_card_list">
-          <div style="margin-right: 10rpx; color: #666">答题卡</div>
+          <div style="color: #666">答题卡</div>
           <div class="answer_card_item" v-for="(item, index) in cardNumList" :key="item.value"
             @click="cardNumClick(index)">
-            <div style="margin-right: 8rpx; padding-top: 4rpx">
+            <div >
               <div class="card_num empty" :class="{
                 running: index === currentCardIndex,
                 done: singleStore.doneArr?.includes(index),
@@ -383,8 +388,7 @@ const cardNumClick = (index: number) => {
         }
 
         .option-item-error {
-          --tw-border-opacity: 1;
-          --tw-bg-opacity: 1;
+      
 
           border-color: rgb(255 187 164);
           background-color: rgb(255 246 243);

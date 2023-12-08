@@ -8,7 +8,9 @@ import Settings from '@/views/profile/Settings.vue'
 import Sort from '@/views/bank/Sort.vue'
 import Single from '@/views/bank/components/Single.vue'
 import SingleSubmit from '@/views/bank/components/SingleSubmit.vue'
+import Multiple from '@/views/bank/components/Multiple.vue'
 
+import MultipleSubmit from '@/views/bank/components/MultipleSubmit.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -78,6 +80,24 @@ const router = createRouter({
       path:'/bank/:id/single_submit',
       name:'single_submit',
       component: SingleSubmit,
+      meta:{
+        showTabbar: false
+      }
+    },
+
+    // 多选
+    {
+      path:'/bank/:id/multiple',
+      name:'multiple',
+      component: Multiple,
+      meta:{
+        showTabbar: false
+      }
+    },
+    {
+      path:'/bank/:id/multiple_submit',
+      name:'multiple_submit',
+      component: MultipleSubmit,
       meta:{
         showTabbar: false
       }

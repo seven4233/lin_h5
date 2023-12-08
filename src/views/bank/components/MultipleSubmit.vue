@@ -1,16 +1,16 @@
 <script lang="ts" setup>
 import { onMounted, ref, onBeforeMount, getCurrentInstance } from 'vue'
-import { useSingleStore } from '@/stores/bank/singleStore'
-import { useBankStore } from '@/stores/bank/bankStore'
+import { useMultipleStore } from '@/stores/bank/multipleStore'
+
 import Navbar from '@/components/Navbar.vue';
-import { useRoute } from 'vue-router';
+import { useRoute, onBeforeRouteLeave } from 'vue-router';
 import { showConfirmDialog , showSuccessToast} from 'vant';
 import router from '@/router';
 const route = useRoute()
 // 拿到题库id
 const bankId = ref(route.params.id)
 
-const singleStore = useSingleStore()
+const multipleStore = useMultipleStore()
 const cardNumList = ref([
     {
         value: 1,
@@ -35,9 +35,8 @@ const cardNumList = ref([
 ])
 const currentCardIndex = ref(0)
 
-
 onMounted(() => {
-    singleStore.isSubmit = true
+    multipleStore.isSubmit = true
     showSuccessToast({
         message:"提交成功",
         position:'top'
@@ -45,14 +44,16 @@ onMounted(() => {
 })
 
 
+
 const  backToSort = ()=>{
-    showConfirmDialog({
+  showConfirmDialog({
     title:'提示',
     message:'确认退出答题?',
   }).then(()=>{
     router.push(`/bank/${bankId.value}`)
   })
 }
+
 // 提交
 const handleContinue = () => {
         showConfirmDialog({
@@ -61,7 +62,7 @@ const handleContinue = () => {
                 `继续？`,
         })
             .then(async () => {
-                router.push(`/bank/${bankId.value}/single`)
+                router.push(`/bank/${bankId.value}/multiple`)
       
             })
             .catch(() => {
@@ -89,10 +90,10 @@ const handleNext = ()=>{
 </script>
 
 <template>
-    <Navbar  left-text="题型分类" :left-arrow="true" :left-fn="backToSort" title="单选题" />
+    <Navbar  left-text="题型分类" :left-arrow="true" :left-fn="backToSort" title="多选题" />
 
     <div id="single" class="single_submit">
-        <div v-show="singleStore.singleList?.length" class="header">
+        <div v-show="multipleStore.multipleList?.length" class="header">
             <div class="header-content">
                 <!-- 答题卡圈圈 -->
                 <div class="answer_card_list">
@@ -101,8 +102,8 @@ const handleNext = ()=>{
                         @click="cardNumClick(index)">
                         <div style="margin-right: 8rpx; padding-top: 4rpx">
                             <div class="card_num done" :class="{
+                                'error': !multipleStore.doneCorrectArr?.includes(index),
                                 'running': index === currentCardIndex,
-                                'error': !singleStore.doneCorrectArr?.includes(index)
                             }">
                                 {{ item.value }}
                             </div>
@@ -112,7 +113,6 @@ const handleNext = ()=>{
 
                 <!-- 提交答案 -->
                 <div class="header-submitter">
-                 
                     <div class="ab" @click="handleContinue">
                         <div class="cd">继续</div>
                     </div>
@@ -122,12 +122,12 @@ const handleNext = ()=>{
 
         <!-- 题目区域 -->
         <div class="page-wrapper-submit">
-            <template v-for="(item, index) in singleStore.singleList" :key="index">
+            <template v-for="(item, index) in multipleStore.multipleList" :key="index">
                 <!-- 一题 -->
                 <div v-show="index === currentCardIndex" class="item" :id="index + ''">
                     <div class="title">
                         <div class="question-desc-header">
-                            <div class="commonClass singleClass">单选题</div>
+                            <div class="commonClass singleClass">多选题</div>
                             <div class="rightAction">
                                 <div class="collectIcon">
                                     <van-icon name="star-o" size=".27rem" />
@@ -147,16 +147,16 @@ const handleNext = ()=>{
                     </div>
                     <!-- 选项区 -->
                     <div class="question-select">
-                        <div class="option-item" :class="{
-                            'option-item-selected': item.answer === i.value,
-                            'option-item-error': singleStore.isSubmit && i.selected && i.value !== item.answer,
+                        <div v-show="i.label" class="option-item" :class="{
+                            'option-item-selected': item.answer.includes(i.value),
+                            'option-item-error': multipleStore.isSubmit && i.selected && !item.answer.includes(i.value),
                         }" v-for="(i, idx) in item.options" :key="i.value" >
                             <div class="label">{{ i.value }}</div>
                             <div class="content">{{ i.label }}</div>
                         </div>
                     </div>
                     <!-- 答案区 -->
-                    <div v-if="singleStore.isSubmit" class="answer_wrapper">
+                    <div v-if="multipleStore.isSubmit" class="answer_wrapper">
                         <div class="answer_compare">
                             <div class="correct_answer">
                                 正确答案：
@@ -231,8 +231,8 @@ const handleNext = ()=>{
           }
 
           .running {
-            border: .01remsolid rgb(240 240 240 / 100%);
-            border-color: rgb(50 202 153 / 100%);
+            border: .01rem solid rgb(240 240 240) !important;
+            border-color: rgb(50 202 153 / 100%) !important;
           }
 
           .done {
@@ -416,25 +416,23 @@ const handleNext = ()=>{
                 }
 
                 .answer_compare {
+                    font-size: .14rem;
                     display: flex;
                     align-items: center;
-                    margin-bottom: 16px;
+                    margin-bottom: 6px;
 
                     .correct_answer {
                         font-weight: 500;
 
                         span {
-                            --tw-text-opacity: 1;
-
                             display: inline-block;
-                            color: rgb(50 202 153 / var(--tw-text-opacity));
+                            color: rgb(50 202 153 );
                         }
                     }
 
                     .your_answer {
                         margin-left: 20px;
                         font-weight: 500;
-
                         span {
                             display: inline-block;
                         }
