@@ -9,8 +9,9 @@ import Sort from '@/views/bank/Sort.vue'
 import Single from '@/views/bank/components/Single.vue'
 import SingleSubmit from '@/views/bank/components/SingleSubmit.vue'
 import Multiple from '@/views/bank/components/Multiple.vue'
-
 import MultipleSubmit from '@/views/bank/components/MultipleSubmit.vue'
+import Judge from '@/views/bank/components/Judge.vue'
+import JudgeSubmit from '@/views/bank/components/JudgeSubmit.vue'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -101,7 +102,24 @@ const router = createRouter({
       meta:{
         showTabbar: false
       }
-    }
+    },
+        // 判断
+        {
+          path:'/bank/:id/judge',
+          name:'judge',
+          component: Judge,
+          meta:{
+            showTabbar: false
+          }
+        },
+        {
+          path:'/bank/:id/judge_submit',
+          name:'multipljudge_submit',
+          component: JudgeSubmit,
+          meta:{
+            showTabbar: false
+          }
+        }
     // {
     //   component: () => import('../views/AboutView.vue')
     // }

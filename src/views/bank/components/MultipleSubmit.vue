@@ -242,7 +242,7 @@ const handleNext = ()=>{
           }
 
           .error {
-            border: .01rem rgb(255 154 118 / 100%);
+            border: .01rem solid rgb(255 154 118 / 100%);
             background-color: rgb(255 246 243 / 100%);
             color: rgb(255 86 27 / 100%);
           }

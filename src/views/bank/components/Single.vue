@@ -238,8 +238,8 @@ const cardNumClick = (index: number) => {
           }
 
           .running {
-            border: .01remsolid rgb(240 240 240 / 100%);
-            border-color: rgb(50 202 153 / 100%);
+            border: .01rem solid rgb(240 240 240) !important;
+            border-color: rgb(50 202 153 / 100%) !important;
           }
 
           .done {
@@ -249,7 +249,7 @@ const cardNumClick = (index: number) => {
           }
 
           .error {
-            border: .01remsolid rgb(255 154 118 / 100%);
+            border: .01rem solid rgb(255 154 118 / 100%);
             background-color: rgb(255 246 243 / 100%);
             color: rgb(255 86 27 / 100%);
           }
