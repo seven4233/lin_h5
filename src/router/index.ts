@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '@/views/home/index.vue'
 import Login from '@/views/login/Login.vue'
 import ProfileIndex from '@/views/profile/index.vue'
-import Discover from '@/views/discover/index.vue' 
+import File from '@/views/file/index.vue' 
 import Settings from '@/views/profile/Settings.vue'
 import Sort from '@/views/bank/Sort.vue'
 import Single from '@/views/bank/components/Single.vue'
@@ -12,6 +12,11 @@ import Multiple from '@/views/bank/components/Multiple.vue'
 import MultipleSubmit from '@/views/bank/components/MultipleSubmit.vue'
 import Judge from '@/views/bank/components/Judge.vue'
 import JudgeSubmit from '@/views/bank/components/JudgeSubmit.vue'
+import Bank from '@/views/home/components/Bank.vue'
+import SearchResult from '@/views/search/index.vue'
+import Collection from '@/views/profile/Collection.vue'
+
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -52,13 +57,27 @@ const router = createRouter({
           meta:{
             showTabbar: false
           }
+        },
+        {
+          path:'collect',
+          name:'collect',
+          component: Collection ,
+          meta:{
+            showTabbar: false
+          }
         }
       ]
     },
     {
-      path: '/discover',
-      name: 'discover',
-      component: Discover
+      path: '/bank',
+      name: 'bank',
+      component: Bank
+    },
+
+    {
+      path: '/file',
+      name: 'file',
+      component: File
     },
     {
       path: '/bank/:id',
@@ -119,10 +138,21 @@ const router = createRouter({
           meta:{
             showTabbar: false
           }
-        }
+        },
+        {
+          path:'/search',
+          name:'search',
+          component: SearchResult ,
+          meta:{
+            showTabbar: false
+          }
+        },
+      
     // {
     //   component: () => import('../views/AboutView.vue')
     // }
+
+  
   ]
 })
 

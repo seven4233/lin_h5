@@ -43,8 +43,8 @@ const changeToAccount = ()=>{
       </p>
 
       <p class="policy_tip"><input type="checkbox" class="policy_tip-checkbox">
-        <span>我已阅读并同意</span> <a data-v-68a4521d="" href="https://in.m.jd.com/help/app/register_info.html">《用户服务协议》</a> <a
-          data-v-68a4521d="" href="https://in.m.jd.com/help/app/private_policy.html">《用户隐私政策》</a>
+        <span>我已阅读并同意</span> <a data-v-68a4521d="" href="#">《用户服务协议》</a> <a
+          data-v-68a4521d="" href="#">《用户隐私政策》</a>
         <span>，未注册的手机号将自动创建账号</span>
       </p>
     </div>

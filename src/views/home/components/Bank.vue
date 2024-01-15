@@ -4,6 +4,7 @@ import { onMounted } from 'vue'
 import { useBankStore } from '@/stores/bank/bankStore'
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import  Navbar from '@/components/Navbar.vue';
 
 const list = ref([]);
 const loading = ref(false);
@@ -28,20 +29,12 @@ const itemClick = (bank: any) => {
 </script>
 
 <template>
-  <div class="bank">
-    <div class="van-hairline--bottom">
-      <div class="title">
-        <div class="icon">
-          <img src="@/assets/images/bank.png" alt="">
-        </div>
-        <div class="text">题库列表</div>
-      </div>
+  <Navbar title="题库"/>
 
-    </div>
+  <div class="bank">
     <van-list v-model:loading="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
       <van-cell @click="itemClick(item)" icon="star" v-for="item in bankStore.bankList" :key="item.id" :title="item.name" />
     </van-list>
-
   </div>
 </template>
 

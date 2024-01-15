@@ -36,6 +36,26 @@ export async function updateUserInfoAPI(userToUpdate: UserInfo) {
 }
 
 // 上传头像
-export async function updateAvatarAPI(file: any, ) {
+export async function updateAvatarAPI(file: any) {
   return hlRequest.post('/user/avatar', file)
+}
+
+// 添加搜索历史
+export async function addSearchHistoryAPI(keyword:string) {
+  return hlRequest.post('/user/history', {keyword})
+}
+
+// 获取搜索历史
+export async function getSearchHistoryAPI() {
+  return hlRequest.get('/user/history')
+}
+
+// 删除搜索历史
+export async function deleteSearchHistoryAPI(id: number) {
+  return hlRequest.delete('/user/history?id=' + id)
+}
+
+// 清空搜索历史
+export async function clearSearchHistoryAPI() {
+  return hlRequest.delete('/user/history/all' )
 }

@@ -6,7 +6,7 @@ import { showToast } from 'vant';
 
 const hlRequest = axios.create({
     baseURL: import.meta.env.VITE_BASE_URL,
-    timeout: 10000
+    timeout: 300000
 })
 
 //请求拦截器
@@ -26,7 +26,7 @@ hlRequest.interceptors.response.use(res =>{
 }, (err) =>{
     console.log(err);
     
-    if(err.response.status === 401){
+    if(err.response?.status === 401){
         showToast('请登录后操作');
         router.push('/login')
     }

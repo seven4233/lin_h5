@@ -29,12 +29,21 @@ const props =  defineProps({
 </script> 
 
 <template>
-  <div class="navbar">
+  <div class="navbar" >
     <van-nav-bar :title="title" :left-text="leftText" :left-arrow=leftArrow @click-left="onClickLeft" />
   </div>
 
 </template>
 <style lang="less">
 
+.navbar {
+  position: sticky;
+  z-index: 99999;
+  top: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* 添加底部阴影效果 */
+  
+}
 
 </style>

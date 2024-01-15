@@ -12,14 +12,7 @@ body {
 }
 
 
-input {
-    box-sizing: border-box;
-    line-height: normal;
-    border-radius: 0;
-    border: 0;
-    font-size: .16rem;
-    outline: none;
-}
+
 a{
     color: #4a90e2;
     text-decoration: none;

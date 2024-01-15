@@ -64,7 +64,7 @@ const afterRead = async (file: any) => {
 </script>
 
 <template>
-    <Navbar title="资料设置" leftArrow />
+    <Navbar title="资料设置"  />
     <!-- 表单 -->
     <van-form @submit="onSubmit">
         <van-field v-model="updateForm.account" name="account" label="账号/手机号" disabled />
