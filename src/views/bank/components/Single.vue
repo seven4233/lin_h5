@@ -8,6 +8,8 @@ import { useRoute, useRouter } from "vue-router";
 import { showConfirmDialog } from "vant";
 import { Icon } from 'tdesign-icons-vue-next';
 import {addFavorAPI} from '@/apis/user'
+import { useUserStore } from "@/stores/userStore";
+
 
 const route = useRoute();
 const router = useRouter();
@@ -15,6 +17,7 @@ const router = useRouter();
 const bankId = ref(route.params.id);
 
 const singleStore = useSingleStore();
+const userStore = useUserStore()
 const bankStore = useBankStore();
 const cardNumList = ref([
   {
@@ -108,6 +111,8 @@ const onChange = async(v:any, item:SingleItem)=>{
   console.log(v, item);
   // 发送添加收餐请求
   const res = await addFavorAPI(item)
+
+  await userStore.getFavorList()
   
 }
 
@@ -167,7 +172,7 @@ const onChange = async(v:any, item:SingleItem)=>{
               <div class="commonClass singleClass">单选题</div>
               <div class="rightAction">
                 <div class="collection">
-                  <t-check-tag v-model="isCollect" :on-change="(e:any) => onChange(e, item)" variant="dark" :content="['已收藏', '收藏']">
+                  <t-check-tag v-model="item.isFavored" :on-change="(e:any) => onChange(e, item)" variant="dark" :content="['已收藏', '收藏']">
                     <template #icon>
                       <Icon v-show="!isCollect" name="heart" />
                     </template>

@@ -1,17 +1,24 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import  type { UserInfo } from '@/types/user';
-import { getUserInfoAPI } from '@/apis/user';
+import { getFavorListAPI, getUserInfoAPI } from '@/apis/user';
 
 export const useUserStore = defineStore('user', () => {
 
   const userInfo = ref<UserInfo>();
   const token = ref()
+  const favorList = ref()
 
-//
+// 刷新用户信息
 const refreshUserInfo = async()=>{
   let res:any = await getUserInfoAPI()
   userInfo.value = res
+}
+// 获取收藏列表
+const getFavorList = async()=>{
+  let res:any = await getFavorListAPI()
+  favorList.value = res.result
+
 }
 
 //   保存用户资料
@@ -31,7 +38,7 @@ const refreshUserInfo = async()=>{
     token.value = ''
   }
 
-  return { userInfo, setUserInfo, setToken, clearUserInfo,getToken, token , refreshUserInfo}
+  return { userInfo, getFavorList, setUserInfo, setToken, clearUserInfo,getToken, token , refreshUserInfo}
 }, {
     persist: true
 })

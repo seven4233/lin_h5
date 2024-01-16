@@ -23,6 +23,7 @@ const login = async () => {
         userStore.setToken(res.token)
 
         const userInfo = await getUserInfoAPI()
+        await userStore.getFavorList()
         // const uploadToken = await getUploadToken()
         // console.log(uploadToken);
         userStore.setUserInfo(userInfo)

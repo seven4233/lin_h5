@@ -37,6 +37,7 @@ export type BankItem = {
     answer: string
     question_index: number
     your: string
+    isFavored:boolean
   }
   export type SingleListReturnType = {
     doneCount: number
@@ -54,6 +55,7 @@ export type BankItem = {
     answer: string
     question_index: number;
     your:'';
+    isFavored:boolean
   }
   export type MultipleOption = {
     label: string
@@ -72,6 +74,7 @@ export type BankItem = {
     options: SingleOption[],
     question_index: number;
     your?:string;
+    isFavored:boolean
   }
   
   export type JudgeListReturnType = {

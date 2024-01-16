@@ -11,7 +11,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Tabbar: typeof import('./src/components/Tabbar.vue')['default']
-    TButton: typeof import('tdesign-mobile-vue')['Button']
     TCheckTag: typeof import('tdesign-mobile-vue')['CheckTag']
     TDialog: typeof import('tdesign-mobile-vue')['Dialog']
     TList: typeof import('tdesign-mobile-vue')['List']
@@ -24,7 +23,6 @@ declare module 'vue' {
     VanEmpty: typeof import('vant/es')['Empty']
     VanField: typeof import('vant/es')['Field']
     VanForm: typeof import('vant/es')['Form']
-    VanHighlight: typeof import('vant/es')['Highlight']
     VanIcon: typeof import('vant/es')['Icon']
     VanList: typeof import('vant/es')['List']
     VanLoading: typeof import('vant/es')['Loading']
@@ -36,9 +34,7 @@ declare module 'vue' {
     VanTabbar: typeof import('vant/es')['Tabbar']
     VanTabbarItem: typeof import('vant/es')['TabbarItem']
     VanTag: typeof import('vant/es')['Tag']
-    VanTextEllipsis: typeof import('vant/es')['TextEllipsis']
     VanUploader: typeof import('vant/es')['Uploader']
-    VarButton: typeof import('@varlet/ui')['_ButtonComponent']
     VarUploader: typeof import('@varlet/ui')['_UploaderComponent']
   }
 }
