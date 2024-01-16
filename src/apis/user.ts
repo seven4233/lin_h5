@@ -59,3 +59,12 @@ export async function deleteSearchHistoryAPI(id: number) {
 export async function clearSearchHistoryAPI() {
   return hlRequest.delete('/user/history/all' )
 }
+// 添加收藏
+export async function addFavorAPI(body:any) {
+  return hlRequest.post('/user/favor', body)
+}
+
+// 获取收藏列表
+export async function getFavorListAPI() {
+  return hlRequest.get('/user/favor',)
+}

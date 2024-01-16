@@ -17,6 +17,7 @@
     "less": "^4.2.0",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.0",
+    "tdesign-icons-vue-next": "^0.2.2",
     "tdesign-mobile-vue": "^1.0.9",
     "vant": "^4.7.3",
     "vue": "^3.3.4",

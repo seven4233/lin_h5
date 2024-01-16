@@ -26,6 +26,9 @@ dependencies:
   pinia-plugin-persistedstate:
     specifier: ^3.2.0
     version: 3.2.0(pinia@2.1.7)
+  tdesign-icons-vue-next:
+    specifier: ^0.2.2
+    version: 0.2.2(vue@3.3.8)
   tdesign-mobile-vue:
     specifier: ^1.0.9
     version: 1.0.9(vue@3.3.8)

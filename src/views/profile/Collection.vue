@@ -1,6 +1,18 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
+import { getFavorListAPI } from '@/apis/user';
 
 import Navbar from '@/components/Navbar.vue';
+
+
+const getFavorList = async()=>{
+    let res = await getFavorListAPI()
+    console.log(res);
+    
+}
+onMounted(()=>{
+    getFavorList()
+})
 </script>
 
 <template>
