@@ -38,7 +38,7 @@ const getFavorList = async()=>{
     token.value = ''
   }
 
-  return { userInfo, getFavorList, setUserInfo, setToken, clearUserInfo,getToken, token , refreshUserInfo}
+  return { userInfo, getFavorList,favorList, setUserInfo, setToken, clearUserInfo,getToken, token , refreshUserInfo}
 }, {
     persist: true
 })

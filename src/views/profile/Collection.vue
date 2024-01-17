@@ -1,17 +1,14 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 import { getFavorListAPI } from '@/apis/user';
-
+import {useUserStore} from '@/stores/userStore'
 import Navbar from '@/components/Navbar.vue';
+import QuestionItem from '@/components/QuestionItem.vue'
 
+const userStore = useUserStore()
 
-const getFavorList = async()=>{
-    let res = await getFavorListAPI()
-    console.log(res);
-    
-}
 onMounted(()=>{
-    getFavorList()
+    userStore.getFavorList()
 })
 </script>
 
@@ -20,8 +17,9 @@ onMounted(()=>{
 
     <div>
         <h2>题目</h2>
-        
-        collect
+        <template v-for="item in userStore.favorList" :key="item.id">
+            <QuestionItem :item="item"/>
+        </template>  
     </div>
 </template>
 
