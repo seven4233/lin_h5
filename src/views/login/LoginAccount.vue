@@ -9,8 +9,8 @@ import { useRouter } from "vue-router";
 const userStore = useUserStore()
 
 const loginForm = ref({
-    account: '',
-    password: ''
+    account: '15860181568',
+    password: '123aaa'
 })
 const emits = defineEmits(['changeToMobile'])
 
